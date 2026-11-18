@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="it.exolab.mapper.ProdottoMapper">
+
+  <insert id="insert" parameterType="it.exolab.model.Prodotto"
+  		useGeneratedKeys="true"
+    	keyProperty="id"
+  		keyColumn="id"
+  >
+    insert into prodotto (nome,prezzo,quantita_disponibile) values (#{nome},#{prezzo},#{quantita_disponibile}) 
+  </insert>
+  
+  
+  
+  <update id="update" parameterType="it.exolab.model.Prodotto"
+  		
+  >
+    update  prodotto set nome= #{nome} where id = #{id} 
+  </update>
+  
+  
+  <update id="updateQuantita" parameterType="it.exolab.model.Prodotto"
+  		
+  >
+    update  prodotto set quantita_disponibile= #{quantita_disponibile} where id = #{id} 
+  </update>
+  
+  <delete id="delete" parameterType="Long"
+  		
+  >
+    delete from prodotto  where id = #{id} 
+  </delete>
+  
+  
+   <select id="findAll" resultType="it.exolab.model.Prodotto" 
+  	
+  >
+    select * from prodotto order by nome asc
+  </select>
+  
+  
+   <select id="find" resultType="it.exolab.model.Prodotto" 
+   parameterType="Long"
+  	
+  >
+    select * from prodotto where id = #{id}
+  </select>
+  
+  
+
+  
+</mapper>
