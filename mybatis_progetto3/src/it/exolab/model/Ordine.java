@@ -66,6 +66,18 @@ public class Ordine {
 		
 		
 	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Prodotto getProdotto() {
+		return prodotto;
+	}
+	public void setProdotto(Prodotto prodotto) {
+		this.prodotto = prodotto;
+	}
 	
 
 }

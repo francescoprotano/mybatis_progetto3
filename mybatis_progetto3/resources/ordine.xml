@@ -3,9 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="it.exolab.mapper.OrdineMapper">
+<mapper namespace="mapper.OrdineMapper">
 
-  <insert id="insert" parameterType="it.exolab.model.Ordine"
+  <insert id="insert" parameterType="model.Ordine"
   		useGeneratedKeys="true"
     	keyProperty="id"
   		keyColumn="id"
@@ -17,7 +17,7 @@
   
   
   
-   <delete id="delete"  
+   <delete id="cancella"  
   	parameterType="Long"
   >
     delete from ordine where id = #{id}   
@@ -30,7 +30,47 @@
   </select>
   
   
+   <select id="findAllJoinProdottoECliente" resultMap="findAllMap" 
+  	
+  >
+    select o.*
+    , p.id as prodotto__id
+    , p.nome as prodotto__nome
+    ,p.prezzo as prodotto__prezzo
+    , p.quantita_disponibile as prodotto__quantita_disponibile
+    ,c.id as cliente__id
+    ,c.nome as cliente__nome
+    ,c.cognome as cliente__cognome
+    ,c.indirizzo as cliente__indirizzo
+    ,c.citta as cliente__citta
+    ,c.telefono as cliente__telefono 
+     from ordine o inner join cliente c on c.id = o.id_cliente inner join prodotto p on p.id = o.id_prodotto
+  </select>
   
 
+  
+  
+  <resultMap type="it.exolab.model.Ordine" id="findAllMap">
+  	<id property="id" column="id"/>
+  	<result property="data_ordine" column="data_ordine"/>
+  	<result property="id_cliente" column="id_cliente"/>
+  	<result property="id_prodotto" column="id_prodotto"/>
+  	<result property="prezzo_acquisto" column="prezzo_acquisto"/>
+  	<result property="quantita_acquista" column="quantita_acquista"/>
+  	<result property="stato_lavorazione" column="stato_lavorazione"/>
+  	<association property="cliente" javaType="it.exolab.model.Cliente">
+  		<id property="id" column="cliente__id"/>
+  		<result property="nome" column="cliente__nome"/>
+  	
+  	</association>
+  	<collection property="prodotto" ofType="it.exolab.model.Prodotto">
+  		<id property="id" column="prodotto__id"/>
+  		<result property="nome" column="prodotto__nome"/>
+  		<result property="prezzo" column="prezzo__nome"/>
+  		<result property="quantita_disponibile" column="quantita_disponibile__nome"/>
+  	</collection>
+  
+  </resultMap>
+  
   
 </mapper>

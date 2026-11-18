@@ -14,6 +14,8 @@ public class Programma {
 		
 		prodottoController.insert();
 		clienteController.insert();
+		prodottoController.findAll();
+		clienteController.findAll();
 		ordineController.insert();
 		
 		System.out.println("fine");

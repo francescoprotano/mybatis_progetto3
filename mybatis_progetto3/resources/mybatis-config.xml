@@ -17,7 +17,6 @@
   <mappers>
     <mapper resource="prodotto.xml"/>
     <mapper resource="cliente.xml"/>
-    <mapper resource="ordine.xml"/>
     
   </mappers>
 </configuration>

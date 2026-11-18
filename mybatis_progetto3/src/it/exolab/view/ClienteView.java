@@ -7,7 +7,7 @@ import it.exolab.util.ScannerWrapper;
 
 public class ClienteView {
 	public void insert(Cliente model) {
-		
+		System.out.println("Inserisci dati del cliente");
 		System.out.println("Digita nome:");
 		String nome = ScannerWrapper.getInstance().getInput().nextLine();
 		
@@ -35,9 +35,15 @@ public class ClienteView {
 		
 	}
 	public void print(List<Cliente> models) {
+		System.out.println("Clienti");
+		System.out.println("-----------------------------------");
+		System.out.println("id\t\tnome");
 		for(Cliente model: models) {
-			System.out.println(model.getNome());
+			
+			System.out.println(model.getId()+"\t\t"+model.getNome());
+			System.out.println("-----------------------------------");
 		}
+		System.out.println("-----------------------------------");
 		
 	}
 }

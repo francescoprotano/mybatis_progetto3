@@ -42,6 +42,15 @@ private static OrdineDAO instance;
 	    session.commit();
 	    return ret;
 	}
+	
+
+	public List<Ordine> findAllJoinProdottoECliente() {
+		SqlSession session = MyBatisUtils.getSqlSessionFactory().openSession();
+		OrdineMapper theMapper = session.getMapper(OrdineMapper.class);
+	    List<Ordine> ret = theMapper.findAllJoinProdottoECliente();
+	    session.commit();
+	    return ret;
+	}
 	public void delete(Long id) {
 		SqlSession session = MyBatisUtils.getSqlSessionFactory().openSession();
 		OrdineMapper theMapper = session.getMapper(OrdineMapper.class);

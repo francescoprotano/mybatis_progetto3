@@ -14,6 +14,7 @@ public class OrdineView {
 			
 	}
 	public void insert(Ordine model) {
+		System.out.println("Inserisci dati dell'ordine");
 		System.out.println("Digita id cliente:");
 		Long id_cliente = Long.valueOf(  ScannerWrapper.getInstance().getInput().nextLine());
 		
